@@ -1,0 +1,43 @@
+﻿@model UserModel
+<br />
+<br />
+<br />
+<br />
+<br />
+<section>
+    <div class="card card-info col-sm-6">
+        <div class="card-header">
+            <h3 class="card-title">Register</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form class="form-horizontal" asp-action="Register" method="post" role="form">
+            <input type="hidden" asp-for="ReturnUrl" />
+            <div class="card-body">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-6">
+                        <input type="email" class="form-control" asp-for="email" placeholder="Email">
+                    </div>
+                </div>
+                <br />
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-6">
+                        <input type="password" class="form-control" asp-for="password" placeholder="Password">
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button style="margin-left:17%" type="submit" asp-action="Register" class="btn btn-info">Sign up</button>
+                <button style="margin-left:17%" type="submit" asp-action="Login" class="btn btn-info">Login</button>
+            </div>
+            <!-- /.card-footer -->
+        </form>
+
+    </div>
+</section>
+<br />
+<br />
+<br />

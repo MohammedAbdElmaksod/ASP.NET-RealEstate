@@ -1,0 +1,65 @@
+﻿@model List<TbCategory>
+
+
+@{
+    ViewData["title"] = "Data";
+}
+@section styles{
+    <link href="~/adminpanel/dist/css/adminlte.min.css" rel="stylesheet" />
+    <link href="~/adminpanel/dist/css/adminlte.css" rel="stylesheet" />
+}
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+
+                    <div class="card-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <div>
+                                <a class="btn btn-primary" asp-area="Admin" asp-controller="categories" asp-action="create">Add Category</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-hover text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Category Name</th>
+                                <th>Number of Products</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.CategoryId</td>
+                                <td>@item.CategoryName</td>
+                                <td>@item.TbProducts.Count</td>
+                                <td>
+                                    <a asp-route-id="@item.CategoryId" asp-action="Edit" class="btn btn-warning">Edit</a>
+                                    <a asp-route-id="@item.CategoryId" asp-action="DeleteCategory" class="btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
+<br />
+<br />
+<br />

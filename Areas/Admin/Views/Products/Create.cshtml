@@ -1,0 +1,88 @@
+﻿@model TbProduct
+<br />
+<br />
+<br />
+<br />
+<br />
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3>@ViewBag.state</h3>
+                        <a asp-controller="Categories" asp-area="Admin" asp-action="Create" class="btn btn-primary" style="margin-left:83%">Add Category</a>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form method="post" role="form" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="card-body">
+                            @if (ViewBag.state == "Edit Product")
+                            {
+                                <input type="hidden" asp-for="ProductId" />
+                            }
+                            <div class="form-group row">
+                                <label asp-for="ProductName" class="col-sm-2 col-form-label">Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" asp-for="ProductName" class="form-control" placeholder="Product Name">
+                                    <span asp-validation-for="ProductName"></span>
+                                </div>
+                            </div><br />
+                            <div class="form-group row">
+                                <label asp-for="ProductSalePrice" class="col-sm-2 col-form-label">Sale Price</label>
+                                <div class="col-sm-10">
+                                    <input type="number" asp-for="ProductSalePrice" class="form-control" placeholder="Sale Price">
+                                    <span asp-validation-for="ProductSalePrice"></span>
+                                </div>
+                            </div><br />
+                            <div class="form-group row">
+                                <label asp-for="ProductBuyPrice" class="col-sm-2 col-form-label">Buy Price</label>
+                                <div class="col-sm-10">
+                                    <input type="number" asp-for="ProductBuyPrice" class="form-control" id="inputEmail3" placeholder="Buy Price">
+                                    <span asp-validation-for="ProductBuyPrice"></span>
+                                </div>
+                            </div><br />
+                            <div class="form-group row">
+                                <label asp-for="CategoryId" class="col-sm-2 col-form-label">Category</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" asp-for="CategoryId" asp-items="@(new SelectList(ViewBag.Category,"CategoryId","CategoryName"))">
+                                    </select>
+
+
+                                </div>
+                            </div><br />
+                            <div class="form-group row">
+                                <label asp-for="Description" class="col-sm-2 col-form-label">Buy Price</label>
+                                <div class="col-sm-10">
+                                    <input type="text" asp-for="Description" class="form-control" id="inputEmail3" placeholder="Description">
+                                    <span asp-validation-for="Description"></span>
+                                </div>
+                            </div><br />
+                            <div class="form-group row">
+                                <label asp-for="ImageName" class="col-sm-2 col-form-label">Image</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="ImageName" type="file" name="Files" class="form-control">
+                                </div>
+                            </div><br />
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button type="submit" asp-area="Admin" asp-controller="Products" asp-action="Create" class="btn btn-info">@ViewBag.enter</button>
+                            <a asp-action="Index" class="btn btn-primary" style="margin-left:78%">Back to List</a>
+                        </div>
+                        <!-- /.card-footer -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br />
+<br />
+<br />
+@section Scripts{
+    <script src="~/adminpanel/dist/js/adminlte.js"></script>
+    <script src="~/adminpanel/dist/js/adminlte.min.js"></script>
+    <script src="~/adminpanel/plugins/jquery-validation/jquery.validate.js"></script>
+    <script src="~/adminpanel/plugins/jquery-validation/jquery.validate.min.js"></script>
+}

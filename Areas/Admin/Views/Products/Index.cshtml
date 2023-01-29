@@ -1,0 +1,76 @@
+﻿@model List<TbProduct>
+
+
+
+@{
+    ViewData["title"] = "Data";
+}
+@section styles{
+    <link href="~/adminpanel/dist/css/adminlte.min.css" rel="stylesheet" />
+    <link href="~/adminpanel/dist/css/adminlte.css" rel="stylesheet" />
+}
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <br />
+                    <br />
+                    <br />
+                    <div class="card-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <div>
+                                <a class="btn btn-primary" asp-area="Admin" asp-controller="products" asp-action="create">Add Product</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-hover text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Product Sale price</th>
+                                <th>Product Buy price</th>
+                                <th>Product Category</th>
+                                <th>Description</th>
+                                <th>Product Image</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ProductName</td>
+                                <td>@item.ProductSalePrice</td>
+                                <td>@item.ProductBuyPrice</td>
+                                <td>@item.Category.CategoryName</td>
+                                <td>@item.Description</td>
+                                <td>
+                                    <img src="@string.Format("/Uploads/{0}",item.ImageName)" width="50" height="50" />
+                                </td>
+                                <td>
+                                    <a asp-route-id="@item.ProductId" asp-action="Edit" class="btn btn-warning">Edit</a>
+                                    <a asp-route-id="@item.ProductId" asp-action="DeleteProduct" class="btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
+<br />
+<br />
+<br />
